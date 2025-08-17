@@ -6,7 +6,32 @@
     <title>Smart Shopping List</title>
   </head>
   <body>
-    <h1>Welcome to the Smart Shopping List</h1>
-    <p>Your one-stop solution for managing your shopping list efficiently.</p>
+    <h1>Smart Shopping List</h1>
+    <form method="POST" action="/">
+      <label for="shopping_list">Daftar Belanja:</label><br />
+      <textarea
+        name="shopping_list"
+        id="shopping_list"
+        rows="8"
+        cols="40"
+      ></textarea
+      ><br />
+      <button type="submit">Proses</button>
+    </form>
+    {% if recommendations %}
+    <h2>Rekomendasi Kategori:</h2>
+    <ul>
+      {% for category, items in recommendations.items() %}
+      <li>
+        <strong>{{ category }}</strong>
+        <ul>
+          {% for item in items %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
   </body>
 </html>
