@@ -4,34 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smart Shopping List</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='modern.css') }}"
+    />
   </head>
   <body>
-    <h1>Smart Shopping List</h1>
-    <form method="POST" action="/">
-      <label for="shopping_list">Daftar Belanja:</label><br />
-      <textarea
-        name="shopping_list"
-        id="shopping_list"
-        rows="8"
-        cols="40"
-      ></textarea
-      ><br />
-      <button type="submit">Proses</button>
-    </form>
-    {% if recommendations %}
-    <h2>Rekomendasi Kategori:</h2>
-    <ul>
-      {% for category, items in recommendations.items() %}
-      <li>
-        <strong>{{ category }}</strong>
-        <ul>
-          {% for item in items %}
-          <li>{{ item }}</li>
-          {% endfor %}
-        </ul>
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+    <div class="container">
+      <h1>Smart Shopping List</h1>
+      <form method="POST" action="/">
+        <label for="shopping_list">Daftar Belanja:</label>
+        <textarea
+          name="shopping_list"
+          id="shopping_list"
+          rows="8"
+          cols="40"
+          placeholder="Masukkan daftar belanja Anda di sini... contoh:&#10;- Beras&#10;- Susu&#10;- Roti&#10;- Apel&#10;- Deterjen"
+        ></textarea>
+        <button type="submit">Proses Daftar</button>
+      </form>
+      {% if recommendations %}
+      <h2>Rekomendasi Kategori:</h2>
+      <ul>
+        {% for category, items in recommendations.items() %}
+        <li>
+          <strong>{{ category }}</strong>
+          <ul>
+            {% for item in items %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
   </body>
 </html>
